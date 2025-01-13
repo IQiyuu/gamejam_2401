@@ -2333,9 +2333,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 586068106}
-  speed: 10
+  baseSpeed: 10
+  currentSpeed: 0
+  speedMultiplier: 2
   jumpHeight: 10
-  maxJumps: 3
+  maxJumps: 1
   groundCheckPos: {fileID: 9591477}
   groundCheckSize: {x: 0.75, y: 0.05}
   groundLayer:
