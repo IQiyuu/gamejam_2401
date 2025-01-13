@@ -688,11 +688,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: ce944b66-4be6-4015-8cdf-f7f3daeb2b6b
+  cloudProjectId: d87a3912-e37d-4867-8be9-f2fea1a8c0e0
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Gamejam1
-  organizationId: artelys
+  projectName: gamejam_2401
+  organizationId: iqiyu
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
