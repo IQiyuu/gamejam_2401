@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     [Header("Movement")]
-    public float speed = 5f;
+    public float baseSpeed = 10f;
+    public float currentSpeed;
+    public float speedMultiplier =1.5f;
     float horizontalMovement;
 
     [Header("Jumping")]
@@ -25,8 +27,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = new Vector2(horizontalMovement * speed, rb.linearVelocityY);
+        rb.linearVelocity = new Vector2(horizontalMovement * currentSpeed, rb.linearVelocityY);
         GroundCheck();
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = baseSpeed*speedMultiplier;
+        }
+        else
+        {
+            currentSpeed = baseSpeed;
+        }
+
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -62,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
         }
          
     }
+
+    
+
+
 
     //Gizmos aren't visible on the game execution (dev tool).
     private void OnDrawGizmosSelected()
