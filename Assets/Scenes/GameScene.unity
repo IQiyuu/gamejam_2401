@@ -2673,6 +2673,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: RollSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: Rollduration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1952265088403915140, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: m_Name
       value: Player
