@@ -5,6 +5,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private ParticleSystem smokeEffect;
     public Rigidbody2D rb;
     [Header("Movement")]
     float direction = 0f;
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private bool IsHolding = false;
     private float pressDuration;
     private float pressTime;
-    private bool IsRolling = false;
+    public bool IsRolling = false;
 
     public bool speedRune = false;
     public bool jumpRune = false;
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float speedRuneMultiplier = 1f;
     private float jumpRuneMultiplier = 1f;
-    private float levitationRuneValue = 3f;
+    //private float levitationRuneValue = 3f;
 
     public float Rollduration = 2f;
     public float RollSpeed = 10f;
@@ -61,7 +62,6 @@ public class PlayerMovement : MonoBehaviour
         else
             currentSpeed = baseSpeed;
         Direction = Input.GetAxis("Horizontal");
-       // Debug.Log(Direction);
         if (Input.GetKeyDown(KeyCode.C) && GroundCheck() && IsRolling == false)
         {
             rb.linearVelocity = Vector2.zero;
@@ -73,12 +73,10 @@ public class PlayerMovement : MonoBehaviour
             if (IsHolding)
             {
                 pressDuration = Time.time - pressTime;
-                //Debug.Log("Durée de la pression sur C : " + pressDuration + " secondes");
                 StartCoroutine(Roulade());
                 IsHolding = false;
             }
-        }
-        
+        }  
         Rune();
 
     }
@@ -129,7 +127,6 @@ public class PlayerMovement : MonoBehaviour
             direction  = 1;
         else if (Direction < 0)
             direction = -1;
-       // float direction = transform.localScale.x > 0 ? 1 : -1;
         float duration = 0f;
         if (pressDuration > 1.5)
             pressDuration = 1.5f;
