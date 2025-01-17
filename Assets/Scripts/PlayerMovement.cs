@@ -152,10 +152,10 @@ public class PlayerMovement : MonoBehaviour
             jumpRuneMultiplier = addJump;
         else
             jumpRuneMultiplier = 1f;
-        if (levitationRune)
-            rb.gravityScale = levitationValue;
-        else
-            rb.gravityScale = 3f;
+        // if (levitationRune)
+        //     rb.gravityScale = levitationValue;
+        // else
+        //     rb.gravityScale = 3f;
     }
 
     //Gizmos aren't visible on the game execution (dev tool).
