@@ -33,9 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsCharging = false;
 
-    public bool speedRune = false;
-    public bool jumpRune = false;
-    public bool levitationRune = false;
+    public bool[] runes = {false,false,false,false};
 
     public bool RouladeRune = false;
     public bool ChargeRune = false;
@@ -146,15 +144,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Rune()
     {
-        if (speedRune)
+        if (runes[1]) // si il y a la rune speed active
             speedRuneMultiplier = addSpeed;
         else
             speedRuneMultiplier = 1f;
-        if (jumpRune)
+        if (runes[0]) // si il y a la rune jump active
             jumpRuneMultiplier = addJump;
         else
             jumpRuneMultiplier = 1f;
-        // if (levitationRune)
+        // if (runes[2]) // si il ya la rune levitation active
+        //     rb.gravityScale = levitationValue;
+        // else
+        //     rb.gravityScale = 3f;
+        // if (runes[3]) // si il ya la rune light active
         //     rb.gravityScale = levitationValue;
         // else
         //     rb.gravityScale = 3f;

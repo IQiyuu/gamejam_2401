@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Quest_Object1
   - Enemy
+  - Rune
   layers:
   - Default
   - TransparentFX
