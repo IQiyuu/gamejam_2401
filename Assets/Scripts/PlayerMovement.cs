@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     private float pressTime;
     public bool IsRolling = false;
 
+    public bool IsCharging = false;
+
     public bool speedRune = false;
     public bool jumpRune = false;
     public bool levitationRune = false;
