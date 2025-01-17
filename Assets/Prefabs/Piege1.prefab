@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 6419968557283083731}
   - component: {fileID: 5470675600702145068}
   - component: {fileID: 5640684588579032889}
-  - component: {fileID: 9135670859129667369}
   m_Layer: 3
   m_Name: Piege1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,15 +138,3 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &9135670859129667369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8956289229750556487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238cf64f22496c04492decfb6f081045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
