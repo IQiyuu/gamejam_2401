@@ -15,6 +15,7 @@ TagManager:
   - Walls
   - Collectibles
   - BreakableWall
+  - OneWayGround
   - 
   - 
   - 
