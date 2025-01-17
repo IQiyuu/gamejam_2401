@@ -1,15 +1,20 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Animations;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Animator animator; 
+    bool isFacingRight = true;
+
     [Header("Movement")]
     public float baseSpeed = 10f;
     public float currentSpeed;
     public float speedMultiplier =1.5f;
     float horizontalMovement;
+    
 
     [Header("Jumping")]
     public float jumpHeight = 10f;
@@ -27,8 +32,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         rb.linearVelocity = new Vector2(horizontalMovement * currentSpeed, rb.linearVelocityY);
         GroundCheck();
+        Flip();
         if (Input.GetKey(KeyCode.LeftShift))
         {
             currentSpeed = baseSpeed*speedMultiplier;
@@ -37,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
         {
             currentSpeed = baseSpeed;
         }
+        animator.SetFloat("yVelocity", rb.linearVelocityY);
+        animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+        
+
+        
 
     }
 
@@ -62,16 +75,29 @@ public class PlayerMovement : MonoBehaviour
                 //Holding jump button  = max height.
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpHeight);
                 jumpsRemaing --;
+                animator.SetTrigger("Jump");
             }
             else if(context.canceled)
             {
                 //Tapping jump button = mid height.
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY*0.5f);
                 jumpsRemaing--;
+                animator.SetTrigger("Jump");
             }
         
         }
          
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontalMovement <0|| !isFacingRight && horizontalMovement >0)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+        }
     }
 
     
