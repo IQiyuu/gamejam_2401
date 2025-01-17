@@ -14,7 +14,7 @@ public class EnnemyMouseMove : MonoBehaviour {
 
     void Update() {
         transform.position = Vector3.MoveTowards(transform.position, Next_Waypoint.position, Speed * Time.deltaTime);
-        Debug.Log(Vector3.Distance(transform.position, Next_Waypoint.position));
+        
         if (Vector3.Distance(transform.position, Next_Waypoint.position) < 1f) {
             Transform tmp = Current_waypoint;
             Current_waypoint = Next_Waypoint; 
