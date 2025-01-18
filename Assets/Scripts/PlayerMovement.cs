@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheckPos;
     public Vector2 groundCheckSize = new Vector2(0.5f,0.05f);
     public LayerMask groundLayer;
+    public LayerMask OneWayLayer;
 
     [Header("Runes")]
     private bool IsHolding = false;
@@ -32,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsRolling = false;
 
     public bool IsCharging = false;
+
+    public bool IsRebond = false;
 
     public bool[] runes = {false,false,false,false};
 
@@ -43,16 +46,23 @@ public class PlayerMovement : MonoBehaviour
     private float jumpRuneMultiplier = 1f;
     //private float levitationRuneValue = 3f;
 
+    [Header("Roulade")]
     public float Rollduration = 2f;
     public float RollSpeed = 10f;
     public float addSpeed = 1.5f;
     public float addJump = 1.5f;
     public float levitationValue = 1.5f;
 
+    public Collider2D lCol;
+    public Collider2D rCol;
+
+    float duration;
 
     // Update is called once per frame
     void Update()
     {
+        if (IsRebond)
+            return ;
         if (IsHolding)
             horizontalMovement = 0;
         rb.linearVelocity = new Vector2(horizontalMovement * currentSpeed * speedRuneMultiplier, rb.linearVelocityY);
@@ -62,28 +72,29 @@ public class PlayerMovement : MonoBehaviour
         else
             currentSpeed = baseSpeed;
         Direction = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.C) && GroundCheck() && IsRolling == false)
-        {
-            rb.linearVelocity = Vector2.zero;
-            pressTime = Time.time;
-            IsHolding = true;
-        }
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            if (IsHolding)
+        if (RouladeRune) {
+            if (Input.GetKeyDown(KeyCode.C) && GroundCheck() && IsRolling == false)
             {
-                pressDuration = Time.time - pressTime;
-                StartCoroutine(Roulade());
-                IsHolding = false;
+                rb.linearVelocity = Vector2.zero;
+                pressTime = Time.time;
+                IsHolding = true;
             }
-        }  
+            if (Input.GetKeyUp(KeyCode.C))
+            {
+                if (IsHolding)
+                {
+                    pressDuration = Time.time - pressTime;
+                    StartCoroutine(Roulade());
+                    IsHolding = false;
+                }
+            }
+        }
         Rune();
-
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (!IsHolding)
+        if (!IsHolding && !IsRebond && !IsRolling)
             horizontalMovement = context.ReadValue<Vector2>().x;
         else
             horizontalMovement = 0;
@@ -91,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool GroundCheck()
     {
-        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
+        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer | OneWayLayer))
         {
             jumpsRemaing = maxJumps;
             return true;
@@ -101,13 +112,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(jumpsRemaing>0 && !IsHolding)
+        if(jumpsRemaing>0 && !IsHolding && (GroundCheck() || IsRolling) && !IsRebond)
         {
             if(context.performed)
             {
                 //Holding jump button  = max height.
                 rb.linearVelocity = new Vector2(rb.linearVelocityX , jumpHeight * jumpRuneMultiplier);
-                jumpsRemaing --;
+                jumpsRemaing--;
             }
             else if(context.canceled)
             {
@@ -120,26 +131,41 @@ public class PlayerMovement : MonoBehaviour
          
     }
 
-
     private IEnumerator Roulade()
     {
         if (Direction > 0)
             direction  = 1;
         else if (Direction < 0)
             direction = -1;
-        float duration = 0f;
+        duration = 0f;
         if (pressDuration > 1.5)
             pressDuration = 1.5f;
         if (pressDuration < 0.5f)
             pressDuration = 0.5f;
-        while (duration < pressDuration * Rollduration)
+        IsRolling = true;
+        while (duration < pressDuration * Rollduration && IsRolling)
         {
             duration += Time.deltaTime;
             rb.linearVelocity = new Vector2(RollSpeed * direction * speedRuneMultiplier * (pressDuration - (duration / Rollduration)) , rb.linearVelocityY);
-            IsRolling = true;
+            jumpsRemaing++;
             yield return null;
         }
         IsRolling = false;
+        GroundCheck();
+    }
+
+    private IEnumerator Rebond() {
+        IsRebond = true;
+        float n_duration = 0f;
+        rb.linearVelocity = new Vector2(RollSpeed * -direction * speedRuneMultiplier, rb.linearVelocity.y+2*(RollSpeed-Rollduration));
+        while (n_duration + duration < pressDuration * Rollduration) {
+            n_duration += Time.deltaTime;
+            rb.linearVelocity = new Vector2(RollSpeed * -direction * speedRuneMultiplier, rb.linearVelocity.y);
+            yield return null;
+        }
+        GroundCheck();
+        IsRebond = false;
+        rb.linearVelocity = Vector2.zero;
     }
 
     void Rune()
@@ -168,4 +194,14 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
+
+    void OnTriggerEnter2D( Collider2D coll ) {
+        if (IsRolling && (coll.IsTouching(rCol) || coll.IsTouching(lCol))) {
+            StopCoroutine(Roulade());
+            IsRolling = false;
+            StartCoroutine(Rebond());
+            //rb.linearVelocity = new Vector2(-(RollSpeed * direction * speedRuneMultiplier * (pressDuration - (duration / Rollduration))), rb.linearVelocityY-10);
+        }
+    }
+
 }

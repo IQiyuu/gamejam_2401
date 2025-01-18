@@ -7,7 +7,11 @@ public class Player : MonoBehaviour {
     [SerializeField] bool[] Selected;
     [SerializeField] List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
 
+
+    public List<int>   Quest_Objects;
     public int Rune_Index = 0;
+
+    public float slowMotionTimeScale = 0.1f;
 
 
     void Start() {
@@ -44,8 +48,14 @@ public class Player : MonoBehaviour {
     }
 
     public void WheelRune( InputAction.CallbackContext context ) {
-        if (context.performed ) Debug.Log("Open the wheel");
-        if (context.canceled) Debug.Log("Close the wheel");
+        if (context.performed ) {
+            Time.timeScale = slowMotionTimeScale;
+            Debug.Log("Open the wheel");
+        }
+        if (context.canceled) {
+            Debug.Log("Close the wheel");
+            Time.timeScale = 1;
+        }
     }
 
     void OnTriggerStay2D( Collider2D coll ) {
@@ -54,6 +64,11 @@ public class Player : MonoBehaviour {
             Destroy(coll.gameObject);
             if (Rune_Index == 0)
                 Rune_Index = Runes[0];
+        }
+
+        if (coll.CompareTag("Quest_Object") && Input.GetKeyDown(KeyCode.F)) {
+            Quest_Objects.Add(coll.GetComponent<Id>().id);
+            Destroy(coll.gameObject);
         }
     }
 }
