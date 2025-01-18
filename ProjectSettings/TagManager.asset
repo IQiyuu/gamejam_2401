@@ -7,6 +7,9 @@ TagManager:
   - Quest_Object1
   - Enemy
   - Rune
+  - Bumper
+  - OneWay
+  - Quest_Object
   layers:
   - Default
   - TransparentFX
