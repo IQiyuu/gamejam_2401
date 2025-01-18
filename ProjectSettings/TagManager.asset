@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Quest_Object1
+  - Enemy
+  - Rune
+  - Bumper
+  - OneWay
+  - Quest_Object
   layers:
   - Default
   - TransparentFX
@@ -16,8 +21,7 @@ TagManager:
   - Collectibles
   - BreakableWall
   - OneWayGround
-  - 
-  - 
+  - BreakableGround
   - 
   - 
   - 

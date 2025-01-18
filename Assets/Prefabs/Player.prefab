@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 407356708956251219}
   - component: {fileID: 1955607662062680695}
   - component: {fileID: 944161095669411663}
+  - component: {fileID: 4755424726846933813}
   - component: {fileID: 1216958226329148563}
   m_Layer: 0
   m_Name: Player
@@ -272,6 +273,30 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  IsRolling: 0
+  IsCharging: 0
+  speedRune: 0
+  jumpRune: 0
+  levitationRune: 0
+  RouladeRune: 0
+  ChargeRune: 0
+  Rollduration: 2
+  RollSpeed: 10
+  addSpeed: 1.5
+  addJump: 1.5
+  levitationValue: 1.5
+--- !u!114 &4755424726846933813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952265088403915140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7bdd22a3ea24f4498a38e36e982711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1216958226329148563
 BoxCollider2D:
   m_ObjectHideFlags: 0
