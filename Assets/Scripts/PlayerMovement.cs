@@ -1,12 +1,16 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Animations;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
     private ParticleSystem smokeEffect;
     public Rigidbody2D rb;
+    public Animator animator; 
+    bool isFacingRight = true;
+
     [Header("Movement")]
     float direction = 0f;
     private float Direction;
@@ -14,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float currentSpeed;
     public float speedMultiplier =1.5f;
     float horizontalMovement;
+    
 
     [Header("Jumping")]
     public float jumpHeight = 10f;
@@ -67,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
             horizontalMovement = 0;
         rb.linearVelocity = new Vector2(horizontalMovement * currentSpeed * speedRuneMultiplier, rb.linearVelocityY);
         GroundCheck();
+        Flip();
         if (Input.GetKey(KeyCode.LeftShift))
             currentSpeed = baseSpeed*speedMultiplier;
         else
@@ -79,13 +85,27 @@ public class PlayerMovement : MonoBehaviour
                 pressTime = Time.time;
                 IsHolding = true;
             }
+            animator.SetFloat("yVelocity", rb.linearVelocityY);
+            animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
+            
+
+            
             if (Input.GetKeyUp(KeyCode.C))
             {
                 if (IsHolding)
                 {
-                    pressDuration = Time.time - pressTime;
-                    StartCoroutine(Roulade());
-                    IsHolding = false;
+                    rb.linearVelocity = Vector2.zero;
+                    pressTime = Time.time;
+                    IsHolding = true;
+                }
+                if (Input.GetKeyUp(KeyCode.C))
+                {
+                    if (IsHolding)
+                    {
+                        pressDuration = Time.time - pressTime;
+                        StartCoroutine(Roulade());
+                        IsHolding = false;
+                    }
                 }
             }
         }
@@ -118,18 +138,33 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Holding jump button  = max height.
                 rb.linearVelocity = new Vector2(rb.linearVelocityX , jumpHeight * jumpRuneMultiplier);
-                jumpsRemaing--;
+                jumpsRemaing --;
+                animator.SetTrigger("Jump");
             }
             else if(context.canceled)
             {
                 //Tapping jump button = mid height.
                 rb.linearVelocity = new Vector2(rb.linearVelocityX , rb.linearVelocityY * 0.5f * jumpRuneMultiplier);
                 jumpsRemaing--;
+                animator.SetTrigger("Jump");
             }
         
         }
          
     }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontalMovement <0|| !isFacingRight && horizontalMovement >0)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+        }
+    }
+
+    
 
     private IEnumerator Roulade()
     {
