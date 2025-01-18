@@ -2,14 +2,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Animations;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private ParticleSystem smokeEffect;
     public Rigidbody2D rb;
     public Animator animator; 
     bool isFacingRight = true;
 
     [Header("Movement")]
+    float direction = 0f;
+    private float Direction;
     public float baseSpeed = 10f;
     public float currentSpeed;
     public float speedMultiplier =1.5f;
@@ -26,61 +30,101 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 groundCheckSize = new Vector2(0.5f,0.05f);
     public LayerMask groundLayer;
 
+    [Header("Runes")]
+    private bool IsHolding = false;
+    private float pressDuration;
+    private float pressTime;
+    public bool IsRolling = false;
 
+    public bool IsCharging = false;
+
+    public bool[] runes = {false,false,false,false};
+
+    public bool RouladeRune = false;
+    public bool ChargeRune = false;
+
+
+    private float speedRuneMultiplier = 1f;
+    private float jumpRuneMultiplier = 1f;
+    //private float levitationRuneValue = 3f;
+
+    public float Rollduration = 2f;
+    public float RollSpeed = 10f;
+    public float addSpeed = 1.5f;
+    public float addJump = 1.5f;
+    public float levitationValue = 1.5f;
 
 
     // Update is called once per frame
     void Update()
     {
-        
-        
-        rb.linearVelocity = new Vector2(horizontalMovement * currentSpeed, rb.linearVelocityY);
+        if (IsHolding)
+            horizontalMovement = 0;
+        rb.linearVelocity = new Vector2(horizontalMovement * currentSpeed * speedRuneMultiplier, rb.linearVelocityY);
         GroundCheck();
         Flip();
         if (Input.GetKey(KeyCode.LeftShift))
-        {
             currentSpeed = baseSpeed*speedMultiplier;
-        }
         else
-        {
             currentSpeed = baseSpeed;
+        Direction = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown(KeyCode.C) && GroundCheck() && IsRolling == false)
+        {
+            rb.linearVelocity = Vector2.zero;
+            pressTime = Time.time;
+            IsHolding = true;
         }
         animator.SetFloat("yVelocity", rb.linearVelocityY);
         animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
         
 
         
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            if (IsHolding)
+            {
+                pressDuration = Time.time - pressTime;
+                StartCoroutine(Roulade());
+                IsHolding = false;
+            }
+        }  
+        Rune();
 
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        horizontalMovement = context.ReadValue<Vector2>().x;
+        if (!IsHolding)
+            horizontalMovement = context.ReadValue<Vector2>().x;
+        else
+            horizontalMovement = 0;
     }
 
-    private void GroundCheck()
+    bool GroundCheck()
     {
         if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
             jumpsRemaing = maxJumps;
+            return true;
         }
+        return false;
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(jumpsRemaing>0)
+        if(jumpsRemaing>0 && !IsHolding)
         {
             if(context.performed)
             {
                 //Holding jump button  = max height.
-                rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpHeight);
+                rb.linearVelocity = new Vector2(rb.linearVelocityX , jumpHeight * jumpRuneMultiplier);
                 jumpsRemaing --;
                 animator.SetTrigger("Jump");
             }
             else if(context.canceled)
             {
                 //Tapping jump button = mid height.
-                rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocityY*0.5f);
+                rb.linearVelocity = new Vector2(rb.linearVelocityX , rb.linearVelocityY * 0.5f * jumpRuneMultiplier);
                 jumpsRemaing--;
                 animator.SetTrigger("Jump");
             }
@@ -102,7 +146,46 @@ public class PlayerMovement : MonoBehaviour
 
     
 
+    private IEnumerator Roulade()
+    {
+        if (Direction > 0)
+            direction  = 1;
+        else if (Direction < 0)
+            direction = -1;
+        float duration = 0f;
+        if (pressDuration > 1.5)
+            pressDuration = 1.5f;
+        if (pressDuration < 0.5f)
+            pressDuration = 0.5f;
+        while (duration < pressDuration * Rollduration)
+        {
+            duration += Time.deltaTime;
+            rb.linearVelocity = new Vector2(RollSpeed * direction * speedRuneMultiplier * (pressDuration - (duration / Rollduration)) , rb.linearVelocityY);
+            IsRolling = true;
+            yield return null;
+        }
+        IsRolling = false;
+    }
 
+    void Rune()
+    {
+        if (runes[1]) // si il y a la rune speed active
+            speedRuneMultiplier = addSpeed;
+        else
+            speedRuneMultiplier = 1f;
+        if (runes[0]) // si il y a la rune jump active
+            jumpRuneMultiplier = addJump;
+        else
+            jumpRuneMultiplier = 1f;
+        // if (runes[2]) // si il ya la rune levitation active
+        //     rb.gravityScale = levitationValue;
+        // else
+        //     rb.gravityScale = 3f;
+        // if (runes[3]) // si il ya la rune light active
+        //     rb.gravityScale = levitationValue;
+        // else
+        //     rb.gravityScale = 3f;
+    }
 
     //Gizmos aren't visible on the game execution (dev tool).
     private void OnDrawGizmosSelected()

@@ -11,10 +11,14 @@ public class Pnj : MonoBehaviour {
         if (col.tag == "Player") {
             if (col.IsTouching(chatbox) && !col.IsTouching(hitbox))
                 dial.gameObject.SetActive(true);
+            if (col.IsTouching(hitbox) && col.GetComponent<PlayerMovement>().IsRolling) {
+                Debug.Log("Pnj Dead");
+                Destroy(gameObject);
+            }
         }
     }
 
-    void OnTriggerExit2D(Collider2D col) {
+    void OnTriggerLeave2D(Collider2D col) {
         if (col.tag == "Player") {
             if (!col.IsTouching(chatbox))
                 dial.gameObject.SetActive(false);
