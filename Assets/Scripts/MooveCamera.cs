@@ -7,12 +7,14 @@ public class MooveCamera : MonoBehaviour
     private Vector3 camerapos;
     private bool canMove = true;
 
+    public Vector3 velocity = Vector3.zero;
+
     void Update()
     {
         CameraPosition();
         Vector3 playerPosition = player.transform.position;
-       if (canMove)
-       {
+        if (canMove)
+        {
         if (playerPosition.x + 15 < camerapos.x)
             CameraMoovePos(0);
         if (playerPosition.x - 15 > camerapos.x)
@@ -34,25 +36,29 @@ public class MooveCamera : MonoBehaviour
     {
         if (!canMove) 
             return;
+        Vector3 next = transform.position;
         if (pos == 0)
-            transform.position += Vector3.left * 30;
+            next = transform.position + Vector3.left * 30;
         else if (pos == 1)
-            transform.position += Vector3.right * 30;
+            next = transform.position + Vector3.right * 30;
         else if (pos == 2)
-            transform.position += Vector3.down * 17;
+            next = transform.position + Vector3.down * 17;
         else if (pos == 3)
-            transform.position += Vector3.up * 17;
-        StartCoroutine(DisableMovementTemporarily());
+            next = transform.position + Vector3.up * 17;
+        StartCoroutine(DisableMovementTemporarily(next));
     }
     void CameraPosition()
     {
         camerapos = transform.position;
     }
 
-    private System.Collections.IEnumerator DisableMovementTemporarily()
+    private System.Collections.IEnumerator DisableMovementTemporarily(Vector3 next)
     {
-        canMove = false;            
-        yield return new WaitForSeconds(1f);
-        canMove = true;             
+        canMove = false;
+        for (int i = 0; i <= 30; i++) {
+            transform.position = Vector3.SmoothDamp(transform.position, next, ref velocity, 0.03f);          
+            yield return new WaitForSeconds(0.02f);
+        }
+        canMove = true;        
     }
 }

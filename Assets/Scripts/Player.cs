@@ -1,11 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     [SerializeField] bool[] Selected;
-    [SerializeField] List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
+<<<<<<< HEAD
+    [SerializeField]public List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
+=======
+    [SerializeField] public List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
+>>>>>>> 86e018ab876a3e084d2c537cc7bd81ffda2b1b5f
 
 
     public List<int>   Quest_Objects;
@@ -19,6 +24,8 @@ public class Player : MonoBehaviour {
     [SerializeField] AudioClip left;
 
 	Vector2 last_checkpoint;
+
+    [SerializeField] Text text;
 
     void Start() {
         Selected = gameObject.GetComponent<PlayerMovement>().runes;
@@ -79,6 +86,11 @@ public class Player : MonoBehaviour {
 		Debug.Log("Player died");
 	}
 
+    void OnTriggerEnter2D( Collider2D coll) {
+        if (coll.tag == "Sonic")
+            text.enabled = true;
+    }
+
     void OnTriggerStay2D( Collider2D coll ) {
         if (coll.CompareTag("Rune") && Input.GetKeyDown(KeyCode.F)) {
             Runes.Add(coll.GetComponent<Id>().id);
@@ -100,5 +112,9 @@ public class Player : MonoBehaviour {
 		if (coll.CompareTag("Checkpoint")){
 			last_checkpoint = coll.transform.position;
 		}
+
+        if (CompareTag("Sonic")) {
+            text.text = "Sonic hair but not enough time to add :'(";
+        }
     }
 }
