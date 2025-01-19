@@ -16967,6 +16967,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3300496714479018568, guid: 1ee8dd8a3803c0741a1a9a2f6641d407, type: 3}
   m_PrefabInstance: {fileID: 414839814}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &447235901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5811492889434280841, guid: dcc94895607799e4c92104f80f7f4e62, type: 3}
+  m_PrefabInstance: {fileID: 920456665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &447235906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447235901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0abce6c13d4a934ebbccb75047933f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1825629695}
 --- !u!1001 &463624098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31837,7 +31855,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5811492889434280841, guid: dcc94895607799e4c92104f80f7f4e62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 447235906}
   m_SourcePrefab: {fileID: 100100000, guid: dcc94895607799e4c92104f80f7f4e62, type: 3}
 --- !u!1 &926540755
 GameObject:
@@ -80504,6 +80525,7 @@ AudioSource:
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
+<<<<<<< HEAD
     m_Curve:
     - serializedVersion: 3
       time: 0
@@ -80517,6 +80539,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.5236883}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.1333333, y: 0.17352104}
+  m_EdgeRadius: 0
+--- !u!95 &1825629704 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -3855017671737191962, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+  m_PrefabInstance: {fileID: 463624098}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> acf7c9b8dbc4bd9815088dbff5921d2e7cd3d634
 --- !u!1001 &1826834691
 PrefabInstance:
   m_ObjectHideFlags: 0
