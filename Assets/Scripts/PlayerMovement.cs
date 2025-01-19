@@ -260,14 +260,10 @@ public class PlayerMovement : MonoBehaviour
             jumpRuneMultiplier = addJump;
         else
             jumpRuneMultiplier = 1f;
-        // if (runes[3]) // si il ya la rune levitation active
-        //     rb.gravityScale = levitationValue;
-        // else
-        //     rb.gravityScale = 3f;
-        // if (runes[4]) // si il ya la rune light active
-        //     rb.gravityScale = levitationValue;
-        // else
-        //     rb.gravityScale = 3f;
+        if (runes[3]) // si il ya la rune levitation active
+            rb.gravityScale = levitationValue;
+        else
+            rb.gravityScale = 3f;
     }
 
     //Gizmos aren't visible on the game execution (dev tool).

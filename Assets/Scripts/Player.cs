@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour {
 
     [SerializeField] bool[] Selected;
-    [SerializeField] List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
+    [SerializeField]public List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
 
 
     public List<int>   Quest_Objects;
