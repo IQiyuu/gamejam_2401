@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6419968557283083731}
   - component: {fileID: 5470675600702145068}
   - component: {fileID: 6059732199319435461}
+  - component: {fileID: 6243419797145998075}
   m_Layer: 4
   m_Name: BzzBzz
   m_TagString: Enemy
@@ -103,3 +104,61 @@ MonoBehaviour:
   rotationCenter: {fileID: 6419968557283083731}
   rotationRadius: 2
   angularSpeed: 2
+--- !u!68 &6243419797145998075
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8956289229750556487}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.1320529, y: -0.002153921}
+  - {x: -0.26778632, y: -0.0002821833}
+  - {x: -0.2679341, y: 0.2000633}
+  - {x: -0.065199785, y: 0.2006946}
+  - {x: -0.066234656, y: 0.06970174}
+  - {x: 0.06403712, y: 0.06450754}
+  - {x: 0.066165976, y: 0.20262817}
+  - {x: 0.27165893, y: 0.20139791}
+  - {x: 0.26775384, y: -0.00008865446}
+  - {x: 0.13023832, y: -0.0017041638}
+  - {x: 0.13208845, y: 0.06951575}
+  - {x: 0.06648616, y: 0.06596761}
+  - {x: 0.06682303, y: -0.0670089}
+  - {x: -0.07180294, y: -0.065989405}
+  - {x: -0.07099754, y: 0.06527717}
+  - {x: -0.1310659, y: 0.065290526}
+  - {x: -0.13026454, y: -0.004449755}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

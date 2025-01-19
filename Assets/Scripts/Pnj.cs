@@ -39,8 +39,8 @@ public class Pnj : MonoBehaviour {
     }
 
     void OnTriggerStay2D( Collider2D col ) {
-        if (QuestId == 3)
-            Debug.Log("Player dead");
+        //if (QuestId == 3)
+        //    Debug.Log("Player dead");
     }
 
     void OnTriggerExit2D(Collider2D col) {
