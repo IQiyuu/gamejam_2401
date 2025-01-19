@@ -10733,7 +10733,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -11024,8 +11024,8 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: c0a5af9ecd43f524682a20e596bcc6d0, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 7818530293552587739, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 4316861933941595851, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
   - m_RefCount: 15
@@ -11040,8 +11040,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 7818530293552587739, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -7973601464148203349, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
   - m_RefCount: 1
@@ -12766,7 +12766,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -12943,18 +12943,18 @@ Tilemap:
     m_Data: {fileID: 3080348414190776372, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 2871388101189041909, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1855689041143474051, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 5
     m_Data: {fileID: 5631954192325956620, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
   m_TileMatrixArray:
@@ -16096,6 +16096,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3300496714479018568, guid: 1ee8dd8a3803c0741a1a9a2f6641d407, type: 3}
   m_PrefabInstance: {fileID: 414839814}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &447235901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5811492889434280841, guid: dcc94895607799e4c92104f80f7f4e62, type: 3}
+  m_PrefabInstance: {fileID: 920456665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &447235906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447235901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0abce6c13d4a934ebbccb75047933f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1825629695}
 --- !u!1001 &463624098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16136,6 +16154,10 @@ PrefabInstance:
       propertyPath: addSpeed
       value: 1.684211
       objectReference: {fileID: 0}
+    - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1825629704}
     - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: collider
       value: 
@@ -30081,7 +30103,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5811492889434280841, guid: dcc94895607799e4c92104f80f7f4e62, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 447235906}
   m_SourcePrefab: {fileID: 100100000, guid: dcc94895607799e4c92104f80f7f4e62, type: 3}
 --- !u!1 &926540755
 GameObject:
@@ -73787,7 +73812,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -73837,7 +73862,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -73880,20 +73905,20 @@ Tilemap:
     m_Data: {fileID: 6660916596133884997, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -113109404450371632, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1855689041143474051, guid: 96c5c9f57686a034aabb05de8ff2a378, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 6
     m_Data:
@@ -78007,7 +78032,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1333333, y: 1.1333333}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -78015,6 +78040,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1333333, y: 0.17352104}
   m_EdgeRadius: 0
+--- !u!95 &1825629704 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -3855017671737191962, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+  m_PrefabInstance: {fileID: 463624098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1826834691
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 groundCheckSize = new Vector2(0.5f,0.05f);
     public LayerMask groundLayer;
     public LayerMask OneWayLayer;
+    public LayerMask breakableGroundLayer;
 
     [Header("Runes")]
     private bool IsHolding = false;
@@ -40,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsCharging = false;
 
     public bool IsRebond = false;
+
+    public bool IsDownCharge = false;
 
     public bool[] runes = {false,false,false,false};
 
@@ -109,6 +112,21 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.V) && IsRolling == false && IsDownCharge == false && !GroundCheck() && ChargeRune)
+        {
+            Vector2 direction;
+            RaycastHit2D hit;
+            Vector2 originPos = transform.position;
+            direction = Vector2.down;
+            hit = Physics2D.Raycast(originPos, direction, 1.0f, breakableGroundLayer);
+
+            if (hit != null)
+            {
+                //rb.linearVelocity = Vector2.zero;
+                rb.linearVelocity = new Vector2(rb.linearVelocityX , 20);
+                StartCoroutine(DownCharge());
+            }
+        }
         Rune();
     }
 
@@ -165,6 +183,26 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
+    private IEnumerator DownCharge()
+    {
+        Vector2 direction;
+        RaycastHit2D hit;
+        while (!GroundCheck())
+        {
+            Vector2 originPos = transform.position;
+            direction = Vector2.down;
+            hit = Physics2D.Raycast(originPos, direction, 1.0f, breakableGroundLayer);
+            rb.linearVelocity = new Vector2(rb.linearVelocityX , -20);
+            if (hit.collider != null)
+            {
+                Destroy(hit.collider.gameObject);
+            }
+
+            yield return null;
+        }
+        
+                
+    }
 
     private IEnumerator Roulade()
     {
