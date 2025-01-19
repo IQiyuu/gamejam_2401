@@ -292,9 +292,13 @@ MonoBehaviour:
   OneWayLayer:
     serializedVersion: 2
     m_Bits: 0
+  breakableGroundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   IsRolling: 0
   IsCharging: 0
   IsRebond: 0
+  IsDownCharge: 0
   runes: 00000000
   RouladeRune: 0
   ChargeRune: 0
@@ -305,7 +309,8 @@ MonoBehaviour:
   levitationValue: 1.5
   lCol: {fileID: 0}
   rCol: {fileID: 0}
-  walk: {fileID: 2455370147696160899}
+  audio: {fileID: 0}
+  airborn: 0
 --- !u!114 &4755424726846933813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +328,9 @@ MonoBehaviour:
   Quest_Objects: 
   Rune_Index: 0
   slowMotionTimeScale: 0.1
+  source: {fileID: 0}
+  right: {fileID: 0}
+  left: {fileID: 0}
 --- !u!61 &1216958226329148563
 BoxCollider2D:
   m_ObjectHideFlags: 0
