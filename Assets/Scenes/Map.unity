@@ -80525,7 +80525,6 @@ AudioSource:
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
-<<<<<<< HEAD
     m_Curve:
     - serializedVersion: 3
       time: 0
@@ -80539,7 +80538,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-=======
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
@@ -80568,7 +80566,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: -3855017671737191962, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
   m_PrefabInstance: {fileID: 463624098}
   m_PrefabAsset: {fileID: 0}
->>>>>>> acf7c9b8dbc4bd9815088dbff5921d2e7cd3d634
 --- !u!1001 &1826834691
 PrefabInstance:
   m_ObjectHideFlags: 0
