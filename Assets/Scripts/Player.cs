@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
             Destroy(coll.gameObject);
         }
 
-		if (coll.CompareTag("Enemy")) {
+		if (coll.CompareTag("Enemy")){
 			die();
 		}
 

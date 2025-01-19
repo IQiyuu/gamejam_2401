@@ -12,7 +12,11 @@ public class Pnj : MonoBehaviour {
     public float killDist;
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.tag == "Player") {
+        if (col.tag == "Player" && QuestId == 3) {
+			if (col.IsTouching(hitbox)){
+				col.GetComponent<Player>().die();
+                dial.gameObject.SetActive(false);
+			}
             if (col.GetComponent<Player>().Quest_Objects.Contains(QuestId)) {
                 if (QuestId == 0) {
                     dial.text = "Merci pour mon objet mon pote voila une rune";
