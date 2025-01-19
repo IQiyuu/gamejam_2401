@@ -13,11 +13,22 @@ public class Player : MonoBehaviour {
 
     public float slowMotionTimeScale = 0.1f;
 
+    [SerializeField] AudioSource source;
+
+    [SerializeField] AudioClip right;
+    [SerializeField] AudioClip left;
 
     void Start() {
         Selected = gameObject.GetComponent<PlayerMovement>().runes;
     }
-    public void NextRune( InputAction.CallbackContext context ) {
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.E))
+            NextRune();
+        else if (Input.GetKeyDown(KeyCode.Q))
+            PrecRune();
+    }
+    public void NextRune() {
         if (Runes.Count == 0)
             return ;
         int tmp = Rune_Index;
@@ -26,13 +37,13 @@ public class Player : MonoBehaviour {
         else
             Rune_Index = 0;
         Selected[tmp] = false;
-        if (Rune_Index == 0)
-            Selected[0] = false;
-        else
-            Selected[Rune_Index-1] = true;
+        Selected[Rune_Index] = true;
+        source.Stop();
+        source.clip = right;
+        source.Play();
     }
 
-    public void PrecRune( InputAction.CallbackContext context ) {
+    public void PrecRune() {
         if (Runes.Count == 0)
             return ;
         int tmp = Rune_Index;
@@ -41,10 +52,10 @@ public class Player : MonoBehaviour {
         else
             Rune_Index = Runes.Count;
         Selected[tmp] = false;
-        if (Rune_Index == 0 )
-            Selected[0] = false;
-        else
-            Selected[Rune_Index-1] = true;
+        Selected[Rune_Index] = true;
+        source.Stop();
+        source.clip = left;
+        source.Play();
     }
 
     public void WheelRune( InputAction.CallbackContext context ) {

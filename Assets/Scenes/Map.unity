@@ -16586,7 +16586,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: RouladeRune
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: runes.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: groundCheckSize.x
@@ -16599,6 +16603,10 @@ PrefabInstance:
     - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: OneWayLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 944161095669411663, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: 'runes.Array.data[0]'
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1216958226329148563, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: m_Size.x
@@ -16853,12 +16861,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 8300000, guid: d9586145e9dd74e49bf465d72759256e, type: 3}
+    - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: 8300000, guid: f79e644471ac96343b0e0db77fc0ca33, type: 3}
+    - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1825629718}
+    - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
-      propertyPath: Selected.Array.size
+      propertyPath: Runes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: 'Runes.Array.data[1]'
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: 'Runes.Array.data[2]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: 'Runes.Array.data[3]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      propertyPath: Selected.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4755424726846933813, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       propertyPath: 'Selected.Array.data[0]'
@@ -16882,6 +16918,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1952265088403915140, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1825629717}
+    - targetCorrespondingSourceObject: {fileID: 1952265088403915140, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1825629718}
   m_SourcePrefab: {fileID: 100100000, guid: cf37a21891cb3bb4bbbcce223cf44ab2, type: 3}
 --- !u!1 &486489440
 GameObject:
@@ -79360,6 +79399,103 @@ MonoBehaviour:
   roll: {fileID: 8300000, guid: 020a364f14229f648bd4fe59f60f4cab, type: 3}
   rollCollision: {fileID: 8300000, guid: b045260ca82f95348a44dfdf40851c3b, type: 3}
   source: {fileID: 1825629710}
+--- !u!82 &1825629718
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493542007}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1826834691
 PrefabInstance:
   m_ObjectHideFlags: 0
