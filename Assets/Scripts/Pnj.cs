@@ -9,6 +9,8 @@ public class Pnj : MonoBehaviour {
 
     [SerializeField] int QuestId;
 
+    public float killDist;
+
     void OnTriggerEnter2D(Collider2D col) {
         if (col.tag == "Player") {
             if (col.GetComponent<Player>().Quest_Objects.Contains(QuestId)) {
@@ -22,9 +24,6 @@ public class Pnj : MonoBehaviour {
                 }
                 Debug.Log("Play animation");
             }
-            if (QuestId == 3 && col.IsTouching(hitbox) && !col.GetComponent<PlayerMovement>().IsRolling) {
-                Debug.Log("Player dead");
-            }
             if (col.IsTouching(chatbox) && !col.IsTouching(hitbox))
                 dial.gameObject.SetActive(true);
 
@@ -33,6 +32,11 @@ public class Pnj : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+    }
+
+    void OnTriggerStay2D( Collider2D col ) {
+        if (QuestId == 3)
+            Debug.Log("Player dead");
     }
 
     void OnTriggerExit2D(Collider2D col) {
