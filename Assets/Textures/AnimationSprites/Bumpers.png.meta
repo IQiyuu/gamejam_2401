@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 46b2c3bf2dac31643b0b8e32c887cf20
+guid: d91359022dec4f946b49f01fdbd012a6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2859557601394583188
-    second: IdlePnj_0
+      213: -5461246701116580872
+    second: Bumpers_0
+  - first:
+      213: -965248844588022280
+    second: Bumpers_1
+  - first:
+      213: -5359525206290757430
+    second: Bumpers_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +106,56 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdlePnj_0
+      name: Bumpers_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fb1c2d6f01c534b0800000000000000
+      internalID: -5461246701116580872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bumpers_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f5897a3a4fba92f0800000000000000
+      internalID: -965248844588022280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bumpers_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 17
         height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 49664e5ec703fa720800000000000000
-      internalID: 2859557601394583188
+      spriteID: ac8894a88342f95b0800000000000000
+      internalID: -5359525206290757430
       vertices: []
       indices: 
       edges: []
@@ -134,12 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<< HEAD
-    nameFileIdTable: {}
-=======
     nameFileIdTable:
-      IdlePnj_0: 2859557601394583188
->>>>>>> main
+      Bumpers_0: -5461246701116580872
+      Bumpers_1: -965248844588022280
+      Bumpers_2: -5359525206290757430
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

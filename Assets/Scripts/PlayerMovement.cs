@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsRebond = false;
 
-    public bool[] runes = {false,false,false,false};
+    public bool[] runes = {true,false,false,false,false};
 
     public bool RouladeRune = false;
     public bool ChargeRune = false;
@@ -63,21 +63,38 @@ public class PlayerMovement : MonoBehaviour
 
     float duration;
 
+    [SerializeField] AudioManager audio;
+    public bool airborn = false;
+
     // Update is called once per frame
     void Update()
     {
-        if (IsRebond)
+        if (IsRebond || IsRolling)
             return ;
         if (IsHolding)
             horizontalMovement = 0;
         rb.linearVelocity = new Vector2(horizontalMovement * currentSpeed * speedRuneMultiplier, rb.linearVelocityY);
+        if (rb.linearVelocityX != 0 && !airborn && !audio.isPlayingWalk()) 
+            audio.PlayWalk();
+        else if (audio.isPlayingWalk() && rb.linearVelocityX == 0 && (Input.GetAxis("Horizontal") == 0 || airborn))
+            audio.StopAudio();
+        if (rb.linearVelocityY > 0 && !airborn) {
+            airborn = true;
+            audio.PlayJumpOS();
+        }
+        if (airborn && rb.linearVelocityY == 0 && GroundCheck()) {
+            airborn = false;
+            audio.PlayLandOS();
+        }
         GroundCheck();
         Flip();
         if (Input.GetKey(KeyCode.LeftShift))
             currentSpeed = baseSpeed*speedMultiplier;
         else
             currentSpeed = baseSpeed;
-        Direction = Input.GetAxis("Horizontal");
+        
+        animator.SetFloat("yVelocity", rb.linearVelocityY);
+        animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
         if (RouladeRune) {
             if (Input.GetKeyDown(KeyCode.C) && GroundCheck() && IsRolling == false)
             {
@@ -85,27 +102,15 @@ public class PlayerMovement : MonoBehaviour
                 pressTime = Time.time;
                 IsHolding = true;
             }
-            animator.SetFloat("yVelocity", rb.linearVelocityY);
-            animator.SetFloat("magnitude", rb.linearVelocity.magnitude);
             
-
-            
-            if (Input.GetKeyUp(KeyCode.C))
+            if (Input.GetKeyUp(KeyCode.C) && IsRolling == false)
             {
                 if (IsHolding)
                 {
-                    rb.linearVelocity = Vector2.zero;
-                    pressTime = Time.time;
-                    IsHolding = true;
-                }
-                if (Input.GetKeyUp(KeyCode.C))
-                {
-                    if (IsHolding)
-                    {
-                        pressDuration = Time.time - pressTime;
-                        StartCoroutine(Roulade());
-                        IsHolding = false;
-                    }
+                    pressDuration = Time.time - pressTime;
+                    Direction = Input.GetAxis("Horizontal");
+                    StartCoroutine(Roulade());
+                    IsHolding = false;
                 }
             }
         }
@@ -168,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Roulade()
     {
+        audio.PlayRoll();
         if (Direction > 0)
             direction  = 1;
         else if (Direction < 0)
@@ -191,11 +197,14 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Rebond() {
         IsRebond = true;
+        audio.PlayRollCollisionOS();
         float n_duration = 0f;
-        rb.linearVelocity = new Vector2(RollSpeed * -direction * speedRuneMultiplier, rb.linearVelocity.y+2*(RollSpeed-Rollduration));
+        rb.linearVelocity = new Vector2(RollSpeed * -direction * speedRuneMultiplier * 1.5f, rb.linearVelocity.y+1.5f*(RollSpeed-Rollduration));
         while (n_duration + duration < pressDuration * Rollduration) {
-            n_duration += Time.deltaTime;
-            rb.linearVelocity = new Vector2(RollSpeed * -direction * speedRuneMultiplier, rb.linearVelocity.y);
+            if (!audio.isPlayingRollCollision() && !audio.isPlayingRoll())
+                audio.PlayRoll();
+            n_duration += (Time.deltaTime*2);
+            rb.linearVelocity = new Vector2((RollSpeed/1.5f) * -direction * speedRuneMultiplier * 1.5f, rb.linearVelocity.y);
             yield return null;
         }
         GroundCheck();
@@ -205,19 +214,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Rune()
     {
-        if (runes[1]) // si il y a la rune speed active
+        if (runes[2]) // si il y a la rune speed active
             speedRuneMultiplier = addSpeed;
         else
             speedRuneMultiplier = 1f;
-        if (runes[0]) // si il y a la rune jump active
+        if (runes[1]) // si il y a la rune jump active
             jumpRuneMultiplier = addJump;
         else
             jumpRuneMultiplier = 1f;
-        // if (runes[2]) // si il ya la rune levitation active
+        // if (runes[3]) // si il ya la rune levitation active
         //     rb.gravityScale = levitationValue;
         // else
         //     rb.gravityScale = 3f;
-        // if (runes[3]) // si il ya la rune light active
+        // if (runes[4]) // si il ya la rune light active
         //     rb.gravityScale = levitationValue;
         // else
         //     rb.gravityScale = 3f;
@@ -234,8 +243,8 @@ public class PlayerMovement : MonoBehaviour
         if (IsRolling && (coll.IsTouching(rCol) || coll.IsTouching(lCol))) {
             StopCoroutine(Roulade());
             IsRolling = false;
+            IsRebond = true;
             StartCoroutine(Rebond());
-            //rb.linearVelocity = new Vector2(-(RollSpeed * direction * speedRuneMultiplier * (pressDuration - (duration / Rollduration))), rb.linearVelocityY-10);
         }
     }
 

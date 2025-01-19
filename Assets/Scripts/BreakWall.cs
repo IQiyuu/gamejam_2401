@@ -3,9 +3,12 @@ using UnityEngine.Tilemaps;
 
 public class BreakWall :MonoBehaviour
 {
-    void OnCollisionEnter2D( Collision2D coll ) {
-        Debug.Log(coll.collider.tag);
-        if (coll.collider.tag == "Player" && coll.gameObject.GetComponent<PlayerMovement>().IsRolling)
+    [SerializeField] AudioSource source;
+    void OnTriggerEnter2D( Collider2D coll ) {
+        Debug.Log(coll.GetComponent<Collider>().tag);
+        if (coll.tag == "Player" && coll.gameObject.GetComponent<PlayerMovement>().IsRolling) {
+            source.Play();
             Destroy(gameObject);
+        }
     }
 }

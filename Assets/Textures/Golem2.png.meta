@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 46b2c3bf2dac31643b0b8e32c887cf20
+guid: 8231a2bd680f91049b14c4e7c48ab360
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2859557601394583188
-    second: IdlePnj_0
+      213: 393847590573416183
+    second: Golem2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdlePnj_0
+      name: Golem2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 17
+        width: 1639
+        height: 835
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 49664e5ec703fa720800000000000000
-      internalID: 2859557601394583188
+      spriteID: 7fe95c30c4a377500800000000000000
+      internalID: 393847590573416183
       vertices: []
       indices: 
       edges: []
@@ -134,12 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<< HEAD
     nameFileIdTable: {}
-=======
-    nameFileIdTable:
-      IdlePnj_0: 2859557601394583188
->>>>>>> main
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
