@@ -10,6 +10,7 @@ TagManager:
   - Bumper
   - OneWay
   - Quest_Object
+  - Sonic
   layers:
   - Default
   - TransparentFX

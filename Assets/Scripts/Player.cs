@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     [SerializeField] bool[] Selected;
-    [SerializeField] List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
+    [SerializeField] public List<int> Runes; // 0 => Jump - 1 => Speed - 2 => Lumiere - 3 => Levitation
 
 
     public List<int>   Quest_Objects;
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour {
 
     [SerializeField] AudioClip right;
     [SerializeField] AudioClip left;
+
+    [SerializeField] Text text;
 
     void Start() {
         Selected = gameObject.GetComponent<PlayerMovement>().runes;
@@ -69,6 +72,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void OnTriggerEnter2D( Collider2D coll) {
+        if (coll.tag == "Sonic")
+            text.enabled = true;
+    }
+
     void OnTriggerStay2D( Collider2D coll ) {
         if (coll.CompareTag("Rune") && Input.GetKeyDown(KeyCode.F)) {
             Runes.Add(coll.GetComponent<Id>().id);
@@ -80,6 +88,10 @@ public class Player : MonoBehaviour {
         if (coll.CompareTag("Quest_Object") && Input.GetKeyDown(KeyCode.F)) {
             Quest_Objects.Add(coll.GetComponent<Id>().id);
             Destroy(coll.gameObject);
+        }
+
+        if (CompareTag("Sonic")) {
+            text.text = "Sonic hair but not enough time to add :'(";
         }
     }
 }

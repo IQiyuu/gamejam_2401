@@ -145,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool GroundCheck()
     {
-        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer | OneWayLayer))
+        if(Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer | OneWayLayer | breakableGroundLayer))
         {
             jumpsRemaing = maxJumps;
             return true;

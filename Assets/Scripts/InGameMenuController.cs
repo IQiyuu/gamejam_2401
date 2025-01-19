@@ -7,6 +7,8 @@ public class InGameMenuController : MonoBehaviour
 {
     public GameObject menuCanvas;
 
+    public GameObject mainCanvas;
+
     void Start()
     {
         menuCanvas.SetActive(false);
@@ -18,6 +20,11 @@ public class InGameMenuController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             menuCanvas.SetActive(!menuCanvas.activeSelf);
+            mainCanvas.SetActive(!mainCanvas.activeSelf);
+            if (mainCanvas.activeSelf)
+                Time.timeScale = 1f;
+            else
+                Time.timeScale = 0f;
         }
     }
 
