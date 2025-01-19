@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 8d01867ec4518c44f9367aee95892e2d
-=======
-guid: ac1d2e9c7f29b574f926387ebc11b68b
->>>>>>> 86e018ab876a3e084d2c537cc7bd81ffda2b1b5f
+guid: fc9fa80714848494fb5304ac6fbcd37e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2785366349977813741
-    second: wheel_0
+      213: 3971881838401779283
+    second: Golem4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -41,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -55,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 17
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wheel_0
+      name: Golem4_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +115,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31dfe3cef046859d0800000000000000
-      internalID: -2785366349977813741
+      spriteID: 35673c3fc75fe1730800000000000000
+      internalID: 3971881838401779283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem4_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f646fba86420248b6491bbbf21d2fc
+      internalID: 1578748123
       vertices: []
       indices: 
       edges: []
@@ -129,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e90388df810b6b499690d19239e1f99
     internalID: 0
     vertices: []
     indices: 
@@ -138,12 +156,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<< HEAD
-    nameFileIdTable: {}
-=======
     nameFileIdTable:
-      wheel_0: -2785366349977813741
->>>>>>> 86e018ab876a3e084d2c537cc7bd81ffda2b1b5f
+      Golem4_0: 3971881838401779283
+      Golem4_1: 1578748123
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

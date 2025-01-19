@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 8d01867ec4518c44f9367aee95892e2d
-=======
-guid: ac1d2e9c7f29b574f926387ebc11b68b
->>>>>>> 86e018ab876a3e084d2c537cc7bd81ffda2b1b5f
+guid: 11f67b4a77a3c1a4e9ba1a5ca62ee41a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2785366349977813741
-    second: wheel_0
+      213: 1058249859055969272
+    second: MiniGolem2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -41,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -55,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 17
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wheel_0
+      name: MiniGolem2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +115,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 31dfe3cef046859d0800000000000000
-      internalID: -2785366349977813741
+      spriteID: 8f363a4d3a8afae00800000000000000
+      internalID: 1058249859055969272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniGolem2_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aeaca4b50b5c0d45b2125d3fa8ae987
+      internalID: -1837895967
       vertices: []
       indices: 
       edges: []
@@ -129,7 +147,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 20e7e8b0e9484884a88a0e6d131d2d67
     internalID: 0
     vertices: []
     indices: 
@@ -138,12 +156,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<< HEAD
-    nameFileIdTable: {}
-=======
     nameFileIdTable:
-      wheel_0: -2785366349977813741
->>>>>>> 86e018ab876a3e084d2c537cc7bd81ffda2b1b5f
+      MiniGolem2_0: 1058249859055969272
+      MiniGolem2_1: -1837895967
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

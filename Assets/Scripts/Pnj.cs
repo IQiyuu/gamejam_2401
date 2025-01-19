@@ -15,22 +15,20 @@ public class Pnj : MonoBehaviour {
         if (col.tag == "Player") {
             if (col.GetComponent<Player>().Quest_Objects.Contains(QuestId)) {
                 if (QuestId == 0) {
-                    dial.text = "Merci pour mon objet mon pote voila une rune";
+                    dial.text = "Amazing ! Take the Rolling rune. ' C ' to use.";
                     col.GetComponent<PlayerMovement>().RouladeRune = true;
                 }
                 else {
-                    dial.text = "Merci pour mon objet mon pote voila une rune";
+                    dial.text = "My dude thanks, take this Stomping rune. ' V ' to use.";
                     col.GetComponent<PlayerMovement>().ChargeRune = true;
                 }
-                Debug.Log("Play animation");
             }
             if (col.IsTouching(chatbox) && !col.IsTouching(hitbox))
                 dial.gameObject.SetActive(true);
 
-            if (col.IsTouching(hitbox) && col.GetComponent<PlayerMovement>().IsRolling) {
-                Debug.Log("Pnj Dead");
+            if (col.IsTouching(hitbox) && col.GetComponent<PlayerMovement>().IsRolling)
                 Destroy(gameObject);
-            }
+
         }
     }
 

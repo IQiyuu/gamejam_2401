@@ -6,7 +6,7 @@ public class MenuController : MonoBehaviour
 {
     public void OnStartButtonClick()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Map");
     }
 
     public void OnRagequitButtonClick()
